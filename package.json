@@ -1,0 +1,19 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "A to do app project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sunsesvasko/To-Do-App.git"
+  },
+  "author": "Vasko Blajev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sunsesvasko/To-Do-App/issues"
+  },
+  "homepage": "https://github.com/sunsesvasko/To-Do-App#readme"
+}
