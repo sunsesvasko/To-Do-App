@@ -46,48 +46,40 @@
     flex-direction: column;
 }
 
-.right--container__content h1 {
+.signin--form {
+    gap: 0.7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.signin--form input {
     color: white;
+    border: 1px solid rgb(255, 255, 255, 0.1);
+    padding: 0.6rem 0.5rem;
     font-weight: 700;
-    font-size: 3rem;
+    border-radius: 7px;
+    background-color: #1b1d1e;
 }
 
-.right--container__content p {
-    line-height: 1.2rem;
+.signin--form input::placeholder {
+    font-size: 0.8rem;
 }
 
-#get--started {
+#signin--btn {
     color: lightgray;
     height: 40px;
     border: none;
-    display: flex;
     font-weight: 700;
-    align-items: center;
     border-radius: 0.5rem;
-    justify-content: center;
-    text-decoration: none;
     background-color: #7e6300;
 }
 
-#get--started:hover {
+#signin--btn:hover {
     cursor: pointer;
     background-color: #655002;
 }
 
-.hr--container {
-    display: flex;
-}
-
-.hr--container hr {
-    width: 45%;
-    border: 1px solid rgb(255, 255, 255, 0.1);
-}
-
-.right--container__content span {
-    text-align: center;
-}
-
-#signin--link {
+#signup--link {
     color: rgb(161, 161, 161);
     margin-left: 0.3rem;
     text-decoration: none;

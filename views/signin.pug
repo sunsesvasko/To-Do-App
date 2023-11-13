@@ -1,0 +1,24 @@
+extends landingPage
+
+block append head
+    link(rel="stylesheet", href="/stylesheets/signin.css")
+    title #{title}
+
+block content
+    .left--container
+        h1 Name Placeholder
+        .img--container
+            img(src="/uploads/heart.png", alt="retro style heart")
+    .right--container
+        .right--container__content
+            h1 Sign in
+            form.signin--form 
+                input(type="email" name='email', placeholder='bendover@gmail.com', required) 
+                input(type="password" name='password', placeholder='password' ,required) 
+                button(type='submit', id='signin--btn') Sign in
+            .hr--container 
+                hr
+                span or
+                hr
+            span Already have an account?
+                a(href='/signup' id='signup--link') Sign up

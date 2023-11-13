@@ -1,0 +1,26 @@
+extends landingPage
+
+block append head
+    link(rel="stylesheet", href="/stylesheets/signup.css")
+    title #{title}
+
+block content
+    .left--container
+        h1 Name Placeholder
+        .img--container
+            img(src="/uploads/heart.png", alt="retro style heart")
+    .right--container
+        .right--container__content
+            h1 Sign up
+            form.signup--form 
+                input(type="text" name='name', placeholder='Ben Dover', required) 
+                input(type="email" name='email', placeholder='bendover@gmail.com', required) 
+                input(type="password" name='password', placeholder='password' ,required) 
+                input(type="password" name='passwordConfirm', placeholder='confirm password', required) 
+                button(type='submit', id='signup--btn') Sign up
+            .hr--container 
+                hr
+                span or
+                hr
+            span Already have an account?
+                a(href='/signin' id='signin--link') Sign in

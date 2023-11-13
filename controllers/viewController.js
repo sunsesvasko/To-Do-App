@@ -1,8 +1,17 @@
-
-
-
 exports.getLandingPage = (req, res) => {
     res.status(200).render('landingPage', {
-        title: 'This is the Landing Page'
+        title: 'Landing Page'
+    });
+}
+
+exports.getSignupForm = (req, res,) => {
+    res.status(200).render('signup', {
+        title: 'Signup Page'
+    })
+}
+
+exports.getSigninForm = (req, res,) => {
+    res.status(200).render('signin', {
+        title: 'Signin Page'
     })
 }
