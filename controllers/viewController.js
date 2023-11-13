@@ -15,3 +15,9 @@ exports.getSigninForm = (req, res,) => {
         title: 'Signin Page'
     })
 }
+
+exports.getSignedInPage = (req, res,) => {
+    res.status(200).render('signedIn', {
+        title: 'Your To-Do List'
+    })
+}
