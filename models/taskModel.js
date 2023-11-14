@@ -9,7 +9,17 @@ const taskSchema = new mongoose.Schema({
     },
     content: String,
     scheduled: Date,
-    tags: Array
+    tags: Array,
+    list: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'List',
+        required: [true, 'A task must belong to a list.']
+    },
+    user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: [true, 'A task must belong to a user.']
+    }
 })
 
 const Task = mongoose.model('Task', taskSchema);

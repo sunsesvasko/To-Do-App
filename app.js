@@ -5,6 +5,9 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 
 const viewRoutes = require('./routes/viewRoutes');
+const userRoutes = require('./routes/userRoutes');
+const listRoutes = require('./routes/listRoutes');
+const taskRoutes = require('./routes/taskRoutes');
 
 const app = express();
 
@@ -27,5 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 
 app.use('/', viewRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/lists', listRoutes);
+app.use('/api/tasks', taskRoutes);
 
 module.exports = app;
