@@ -8,7 +8,6 @@ const listSchema = new mongoose.Schema({
         trim: true,
         minlength: [1, 'A list title must have at least 1 character.']
     },
-
 })
 
 const List = mongoose.model('List', listSchema);
