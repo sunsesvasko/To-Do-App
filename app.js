@@ -36,9 +36,9 @@ app.use('/api/users', userRoutes);
 app.use('/api/lists', listRoutes);
 app.use('/api/tasks', taskRoutes);
 
-app.all('*', (req, res, next) => {
-    next(new AppError(`Can't find ${req.originalUrl} on this server!`), 404);
-});
+// app.all('*', (req, res, next) => {
+//     next(new AppError(`Can't find ${req.originalUrl} on this server!`), 404);
+// });
 
 app.use(globalErrorHandler);
 

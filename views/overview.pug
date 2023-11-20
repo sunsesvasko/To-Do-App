@@ -1,0 +1,37 @@
+extends base
+
+mixin container(name, img, alt, selected)
+    if selected
+        .container.selected
+            img(src=`/uploads/${img}.png`, alt=`${alt}`)
+            p=`${name}`
+            span(id=`${img}--tasks`) 5
+    else
+        .container
+            img(src=`/uploads/${img}.png`, alt=`${alt}`)
+            p=`${name}`
+            span(id=`${img}--tasks`) 5
+
+block append head
+    link(rel="stylesheet", href="/stylesheets/overview.css")
+    title #{title}
+
+block content
+    .left--container
+        .menu--container 
+            h3 Menu 
+            img(id='burger' src="/uploads/hamburger.png", alt="Hamburger Menu")
+        .search--container
+            img(id='magnifying--glass' src="/uploads/magnifying-glass.png", alt="Magnifying Glass")
+            input(type='text' id='search' placeholder='Search') 
+        .tasks--container
+            h5 Tasks
+            +container('Upcoming', 'upcoming', 'Upcoming Tasks', true)
+            +container('Today', 'today', 'Todays Tasks', false)
+            +container('Sticky Wall', 'sticky-wall', 'Sticky Wall', false)
+        .lists--container
+            h5 Lists
+            +container('Personal', 'square', 'square', false)
+            +container('Work', 'square', 'square', false)
+            +container('List 1', 'square', 'square', false)
+    .right--container

@@ -1,0 +1,126 @@
+body {
+    color: white;
+}
+
+/* The Whole Let Menu */
+
+.left--container {
+    color: rgb(200, 200, 200);
+    width: 20%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    background-color: #1e2122;
+}
+
+/* The Menu text and Hamburger image container */
+.menu--container {
+    display: flex;
+    padding: 1rem 1rem;
+    justify-content: space-between;
+}
+
+.menu--container h3 {
+    color: rgb(200, 200, 200);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#burger {
+    width: 20px;
+}
+
+#burger:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#burger:active {
+    transform: translateY(2px);
+}
+
+/* Search Bar container */
+
+.search--container {
+    gap: 0.2rem;
+    margin: 0rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    padding: 6px 5px;
+    align-items: center;
+    border-radius: 7px;
+    background-color: #1e2122;
+}
+
+#magnifying--glass {
+    width: 14px;
+    height: 14px;
+    padding: 0px 3px;
+}
+
+#search {
+    outline: none;
+    color: #a1a1a1;
+    font-weight: bold;
+    border: none;
+    background-color: #1e2122;
+}
+
+/* Tasks & Lists Header container */
+.tasks--container, .lists--container {
+    margin: 1.5rem 1rem 0rem 1rem;
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    flex-direction: column;
+    padding-bottom: 0.5rem;
+}
+
+.tasks--container h5, .lists--container h5 {
+    margin-bottom: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.container {
+    gap: 0.8rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-weight: 500;
+    padding: 0.5rem 0rem;
+}
+
+.container:hover {
+    cursor: pointer;
+    transform: scale(1.01);
+}
+
+.container img {
+    margin-left: 0.6rem; 
+}
+
+.container span {
+    right: 1rem;
+    font-size: 0.8rem;
+    padding: 3px 7px;
+    border-radius: 5px;
+    position: absolute;
+    background-color: #383d40;
+}
+
+.selected {
+    border-radius: 0.5rem;
+    background-color: #25282a;
+}
+
+.selected span {
+    background-color: #1b1d1e;
+}
+
+
+.right--container {
+    width: 75%;
+    height: 95%;
+    background-color: rgb(47, 80, 80);
+}
