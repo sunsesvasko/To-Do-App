@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
 const taskSchema = new mongoose.Schema({
-    name: {
+    title: {
         type: String,
-        required: [true, 'A task must have a name.'],
+        required: [true, 'A task must have a title.'],
         trim: true,
-        minlength: [1, 'A task name must have at least 1 character.']
+        minlength: [1, 'A task title must have at least 1 character.']
     },
     content: String,
     scheduled: Date,
-    tags: Array,
     list: {
         type: mongoose.Schema.ObjectId,
         ref: 'List',
@@ -17,8 +16,7 @@ const taskSchema = new mongoose.Schema({
     },
     user: {
         type: mongoose.Schema.ObjectId,
-        ref: 'User',
-        required: [true, 'A task must belong to a user.']
+        ref: 'User'
     }
 })
 
