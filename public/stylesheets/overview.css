@@ -9,6 +9,7 @@ body {
     width: 20%;
     height: 95%;
     display: flex;
+    position: relative;
     flex-direction: column;
     background-color: #1e2122;
 }
@@ -118,6 +119,28 @@ body {
     background-color: #1b1d1e;
 }
 
+/* Logout Container */
+
+.logout--container {
+    gap: 0.5rem;
+    margin: 1.5rem 1rem 0rem 1rem;
+    display: flex;
+    position: absolute;
+    bottom: 1.3rem;
+}
+
+.logout--container p {
+    font-weight: 500;
+}
+
+.logout--container:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+.logout--container:active {
+    transform: translateY(2px);
+}
 
 .right--container {
     width: 75%;
