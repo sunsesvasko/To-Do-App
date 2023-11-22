@@ -1,16 +1,16 @@
 extends base
 
-mixin container(name, img, alt, selected)
+mixin list(name, img, alt, selected, count)
     if selected
         .container.selected
             img(src=`/uploads/${img}.png`, alt=`${alt}`)
             p=`${name}`
-            span(id=`${img}--tasks`) 5
+            span(id=`${img}--tasks`) #{count}
     else
         .container
             img(src=`/uploads/${img}.png`, alt=`${alt}`)
             p=`${name}`
-            span(id=`${img}--tasks`) 5
+            span(id=`${img}--tasks`) #{count}
 
 block append head
     link(rel="stylesheet", href="/stylesheets/overview.css")
@@ -26,14 +26,12 @@ block content
             input(type='text' id='search' placeholder='Search') 
         .tasks--container
             h5 Tasks
-            +container('Upcoming', 'upcoming', 'Upcoming Tasks', true)
-            +container('Today', 'today', 'Todays Tasks', false)
-            +container('Sticky Wall', 'sticky-wall', 'Sticky Wall', false)
+            each list in defaultLists
+                +list(list.title, `${list.title.toLowerCase()}`, `${list.title} Tasks`, false, list.tasks.length)
         .lists--container
             h5 Lists
-            +container('Personal', 'square', 'square', false)
-            +container('Work', 'square', 'square', false)
-            +container('List 1', 'square', 'square', false)
+            each list in personalLists
+                +list(list.title, 'square', 'square', false, list.tasks.length)
         .logout--container
             img(src="/uploads/logout.png", alt="Logout Button")
             p Sign out
