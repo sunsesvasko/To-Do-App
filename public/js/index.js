@@ -1,8 +1,7 @@
-const firstListsRow = document.querySelector('.tasks--container');
-const secondListsRow = document.querySelector('.lists--container');
+const lists = document.querySelector('.lists--container');
 
-if(firstListsRow) {
-    firstListsRow.addEventListener('click', (e) => {
+if(lists) {
+    lists.addEventListener('click', (e) => {
         if(e.target.classList.contains('container')) {
             const nodeName = e.target.children[1].nodeName.toLowerCase();
             const listName = e.target.children[1].textContent.toLowerCase();

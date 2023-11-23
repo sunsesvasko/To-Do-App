@@ -24,7 +24,7 @@ block content
         .search--container
             img(id='magnifying--glass' src="/uploads/magnifying-glass.png", alt="Magnifying Glass")
             input(type='text' id='search' placeholder='Search') 
-        .tasks--container
+        .lists--container
             h5 Tasks
             each list in defaultLists
                 +list(list.title, `${list.title.toLowerCase()}`, `${list.title} Tasks`, false, list.tasks.length)

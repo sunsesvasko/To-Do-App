@@ -68,7 +68,7 @@ body {
 }
 
 /* Tasks & Lists Header container */
-.tasks--container, .lists--container {
+.time--lists--container, .lists--container {
     margin: 1.5rem 1rem 0rem 1rem;
     display: flex;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -76,7 +76,7 @@ body {
     padding-bottom: 0.5rem;
 }
 
-.tasks--container h5, .lists--container h5 {
+.time--lists--container h5, .lists--container h5 {
     margin-bottom: 0.5rem;
     font-size: 0.8rem;
     font-weight: 500;
@@ -147,5 +147,4 @@ body {
 .right--container {
     width: 75%;
     height: 95%;
-    background-color: rgb(47, 80, 80);
 }
