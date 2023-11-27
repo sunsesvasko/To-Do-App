@@ -1,5 +1,6 @@
 const catchAsync = require('../utils/catchAsync');
 const List = require('./../models/listModel');
+const Task = require('./../models/taskModel');
 
 const reOrderTimeSensitiveTaskArray = (arr) => {
     // Re-Order 
@@ -8,6 +9,28 @@ const reOrderTimeSensitiveTaskArray = (arr) => {
     arr.unshift(upcoming);
     arr.push(stickywall);
     return arr;
+}
+
+const findDefaultListsAndPopulate = async(arr) => {
+    return List.find({
+        title: { $in: arr }
+    }).populate('tasks');
+}
+
+const findPersonalListAndPopulate = async(arr) => {
+    return List.find({
+        title: { $nin: arr }
+    }).populate('tasks');
+}
+
+const structureListName = (listName) => {
+    let result = listName.split(' ');
+
+    for(let i = 0; i < result.length; i++) {
+        result[i] = result[i][0].toUpperCase() + result[i].substr(1);
+    }
+
+    return result;
 }
 
 exports.getLandingPage = (req, res) => {
@@ -30,18 +53,10 @@ exports.getSigninForm = (req, res,) => {
 
 exports.getOverviewPage = catchAsync(async(req, res,) => {
     const excludeLists = ['Upcoming', 'Today', 'Sticky Wall']
-    const defaultLists = await List.find({
-        title: { $in: excludeLists }
-    }).populate('tasks');
-    const personalLists = await List.find({
-        title: { $nin: excludeLists }
-    }).populate('tasks');
+    const defaultLists = await findDefaultListsAndPopulate(excludeLists);
+    const personalLists = await findPersonalListAndPopulate(excludeLists);
 
     // Re-Order 
-    // const upcoming = defaultLists.pop();
-    // const stickywall = defaultLists.shift();
-    // defaultLists.unshift(upcoming);
-    // defaultLists.push(stickywall);
     reOrderTimeSensitiveTaskArray(defaultLists);
 
     res.status(200).render('overview', {
@@ -53,17 +68,11 @@ exports.getOverviewPage = catchAsync(async(req, res,) => {
 
 exports.getListPage = catchAsync(async(req, res, next) => {
     const excludeLists = ['Upcoming', 'Today', 'Sticky Wall']
-    const defaultLists = await List.find({
-        title: { $in: excludeLists }
-    }).populate('tasks');
-    const personalLists = await List.find({
-        title: { $nin: excludeLists }
-    }).populate('tasks');
-    const listName = req.query.name.split(' ');
+    const defaultLists = await findDefaultListsAndPopulate(excludeLists);
+    const personalLists = await findPersonalListAndPopulate(excludeLists);
 
-    for(let i = 0; i < listName.length; i++) {
-        listName[i] = listName[i][0].toUpperCase() + listName[i].substr(1);
-    }
+    const listName = structureListName(req.query.name);
+
     const currentList = await List.findOne({ title: listName.join(' ') }).populate('tasks');
 
     reOrderTimeSensitiveTaskArray(defaultLists);
@@ -75,4 +84,27 @@ exports.getListPage = catchAsync(async(req, res, next) => {
         currentList
     })
 
+});
+
+exports.getTaskPage = catchAsync(async(req, res, next) => {
+    const excludeLists = ['Upcoming', 'Today', 'Sticky Wall']
+    const defaultLists = await findDefaultListsAndPopulate(excludeLists);
+    const personalLists = await findPersonalListAndPopulate(excludeLists);
+
+    // const listName = req.query.listName.split(' ');
+    const listName = structureListName(req.query.listName);
+    const taskName = req.query.taskName;
+
+    const currentList = await List.findOne({ title: listName.join(' ') }).populate('tasks');
+    const currentTask = await Task.findOne({ title: taskName }).select('title content -_id');
+
+    
+    reOrderTimeSensitiveTaskArray(defaultLists);
+
+    res.status(200).render('task', {
+        title: `${listName}`,
+        defaultLists,
+        personalLists,
+        currentList
+    });
 });

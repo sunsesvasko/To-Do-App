@@ -118,22 +118,47 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
-var lists = document.querySelector('.lists--container');
-if (lists) {
-  lists.addEventListener('click', function (e) {
-    if (e.target.classList.contains('container')) {
-      var nodeName = e.target.children[1].nodeName.toLowerCase();
-      var listName = e.target.children[1].textContent.toLowerCase();
-      if (nodeName === 'div') return;
-      // console.log(window.location);
-      location.assign("/overview/list?name=".concat(listName));
-    } else {
-      var _nodeName = e.target.parentElement.children[1].nodeName.toLowerCase();
-      var _listName = e.target.parentElement.children[1].textContent.toLowerCase();
-      if (_nodeName === 'div') return;
-      // console.log(window.location);
-      location.assign("/overview/list?name=".concat(_listName));
-    }
+var lists = document.querySelectorAll('.lists--container');
+var tasks = document.querySelectorAll('.task--container');
+var openTaskMenus = document.querySelectorAll('.nextImage');
+if (lists.length > 0) {
+  lists.forEach(function (list) {
+    list.addEventListener('click', function (e) {
+      if (e.target.classList.contains('container')) {
+        var nodeName = e.target.children[1].nodeName.toLowerCase();
+        var listName = e.target.children[1].textContent.toLowerCase();
+        if (nodeName === 'div') return;
+        // console.log(window.location);
+        location.assign("/overview/list?name=".concat(listName));
+      } else {
+        var _nodeName = e.target.parentElement.children[1].nodeName.toLowerCase();
+        var _listName = e.target.parentElement.children[1].textContent.toLowerCase();
+        if (_nodeName === 'div') return;
+        // console.log(window.location);
+        location.assign("/overview/list?name=".concat(_listName));
+      }
+    });
+  });
+}
+if (tasks.length > 0) {
+  tasks.forEach(function (task) {
+    task.addEventListener('click', function (e) {
+      // console.log(e.target);
+      if (e.target.type === 'checkbox') {
+        // console.log(e.target.nextElementSibling);
+        if (e.target.checked) e.target.nextElementSibling.style.textDecoration = 'line-through';else e.target.nextElementSibling.style.textDecoration = '';
+      }
+    });
+  });
+}
+if (openTaskMenus.length > 0) {
+  openTaskMenus.forEach(function (task) {
+    task.addEventListener('click', function (e) {
+      var listName = document.querySelector('.list--container').firstChild.textContent;
+      listName = listName.slice(0, -1);
+      var taskName = e.target.previousSibling.textContent;
+      location.assign("/overview/list/task?listName=".concat(listName, "&taskName=").concat(taskName));
+    });
   });
 }
 },{}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -161,7 +186,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52015" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54559" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
