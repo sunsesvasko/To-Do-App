@@ -98,7 +98,7 @@ exports.getTaskPage = catchAsync(async(req, res, next) => {
     const currentList = await List.findOne({ title: listName.join(' ') }).populate('tasks');
     const currentTask = await Task.findOne({ title: taskName }).select('title content -_id');
 
-    
+    // TO DO - SEND BACK currentTask and start displaying TASK MENU TO USER
     reOrderTimeSensitiveTaskArray(defaultLists);
 
     res.status(200).render('task', {
