@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;700&display=swap');
 
 .list--container {
+    min-width: 65%;
     color: rgb(200, 200, 200);
     gap: 1rem;
     display: flex;

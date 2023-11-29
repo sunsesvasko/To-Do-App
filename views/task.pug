@@ -5,4 +5,9 @@ block append head
     title #{title}
 
 block task
-    h1 THIS IS TASK
+    .taskMenu--container
+        h2 Task:
+        span x
+        input(type="text" placeholder='Renew driver\'s license ' id='taskTitle')
+        textarea(name="description", cols="30", rows="10" class='taskDescription')
+        h2 Subtasks: 

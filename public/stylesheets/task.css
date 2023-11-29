@@ -1,1 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;700&display=swap');
+
+.taskMenu--container {
+    gap: 1rem;
+    width: auto;
+    color: rgb(200, 200, 200);
+    padding: 1.5rem;
+    display: flex;
+    position: relative;
+    font-family: 'Lexend Deca', sans-serif;
+    flex-direction: column;
+    background-color: #1e2122;
+    /* background-color: pink; */
+}
+
+.taskMenu--container h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.taskMenu--container span {
+    right: 1.5rem;
+    display: flex;
+    position: absolute;
+    font-size: 1.2rem;
+    align-items: center;
+    font-weight: 600;
+}
+
+.taskMenu--container input , textarea {
+    width: auto;
+}
+
+.taskMenu--container input {
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.taskMenu--container textarea {
+    
+}

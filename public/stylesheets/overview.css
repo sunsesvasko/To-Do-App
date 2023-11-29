@@ -145,6 +145,8 @@ body {
 /* Right Container */
 
 .right--container {
+    gap: 2rem;
     width: 75%;
     height: 95%;
+    display: flex;
 }

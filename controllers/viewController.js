@@ -105,6 +105,7 @@ exports.getTaskPage = catchAsync(async(req, res, next) => {
         title: `${listName}`,
         defaultLists,
         personalLists,
-        currentList
+        currentList,
+        currentTask
     });
 });
