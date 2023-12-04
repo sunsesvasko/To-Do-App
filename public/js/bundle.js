@@ -120,7 +120,9 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"index.js":[function(require,module,exports) {
 var lists = document.querySelectorAll('.lists--container');
 var tasks = document.querySelectorAll('.task--container');
+var closeTaskMenu = document.querySelector('#closeTask');
 var openTaskMenus = document.querySelectorAll('.nextImage');
+var addNewTaskBtns = document.querySelector('.addNewTask--container');
 if (lists.length > 0) {
   lists.forEach(function (list) {
     list.addEventListener('click', function (e) {
@@ -151,6 +153,13 @@ if (tasks.length > 0) {
     });
   });
 }
+if (closeTaskMenu) {
+  closeTaskMenu.addEventListener('click', function () {
+    var listName = document.querySelector('.list--container').firstChild.textContent;
+    listName = listName.slice(0, -1);
+    location.assign("/overview/list?name=".concat(listName));
+  });
+}
 if (openTaskMenus.length > 0) {
   openTaskMenus.forEach(function (task) {
     task.addEventListener('click', function (e) {
@@ -159,6 +168,13 @@ if (openTaskMenus.length > 0) {
       var taskName = e.target.previousSibling.textContent;
       location.assign("/overview/list/task?listName=".concat(listName, "&taskName=").concat(taskName));
     });
+  });
+}
+
+// Make this open a window where you create a new task
+if (addNewTaskBtns) {
+  addNewTaskBtns.addEventListener('click', function (e) {
+    console.log(e.target);
   });
 }
 },{}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
@@ -186,7 +202,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54559" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64796" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
