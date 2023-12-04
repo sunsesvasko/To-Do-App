@@ -106,6 +106,6 @@ exports.getTaskPage = catchAsync(async(req, res, next) => {
         defaultLists,
         personalLists,
         currentList,
-        currentTask
+        currentTask 
     });
 });
