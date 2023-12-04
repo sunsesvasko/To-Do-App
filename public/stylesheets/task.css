@@ -1,13 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;700&display=swap');
 
+
+body, body * {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.list--container {
+    width: 65%;
+}
+
 .taskMenu--container {
     gap: 1rem;
-    width: auto;
+    width: 35%;
     color: rgb(200, 200, 200);
     padding: 1.5rem;
     display: flex;
     position: relative;
-    font-family: 'Lexend Deca', sans-serif;
     flex-direction: column;
     background-color: #1e2122;
     /* background-color: pink; */
@@ -18,7 +26,7 @@
     font-weight: 500;
 }
 
-.taskMenu--container span {
+#closeTask {
     right: 1.5rem;
     display: flex;
     position: absolute;
@@ -27,8 +35,19 @@
     font-weight: 600;
 }
 
+#closeTask:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#closeTask:active {
+    transform: translateY(2px);
+}
+
 .taskMenu--container input , textarea {
+    color: rgb(200, 200, 200);
     width: auto;
+    outline: none;
 }
 
 .taskMenu--container input {
@@ -39,5 +58,51 @@
 }
 
 .taskMenu--container textarea {
-    
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    resize: none;
+    height: 100px;
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.taskMenu--container textarea::placeholder {
+    color: rgb(160, 160, 160);
+    font-size: 0.8rem;
+}
+
+#deleteTask {
+    left: 1rem;
+    color: rgb(200, 200, 200);
+    width: 42.5%;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    bottom: 1.5rem;
+    padding: 0.6rem 0rem;
+    position: absolute;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+#saveChanges {
+    color: rgb(200, 200, 200);
+    width: 42.5%;
+    right: 1rem;
+    border: none;
+    bottom: 1.5rem;
+    padding: 0.7rem 0rem;
+    position: absolute;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #7e6300;
+}
+
+#deleteTask:hover, #saveChanges:hover  {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#deleteTask:active, #saveChanges:active {
+    cursor: pointer;
+    transform: translateY(2px);
 }

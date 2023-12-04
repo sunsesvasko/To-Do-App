@@ -7,7 +7,9 @@ block append head
 block task
     .taskMenu--container
         h2 Task:
-        span x
+        span#closeTask x
         input(type="text" placeholder='Renew driver\'s license ' id='taskTitle')
-        textarea(name="description", cols="30", rows="10" class='taskDescription')
+        textarea(name="description", cols="30", rows="10" class='taskDescription' placeholder='Description')
         h2 Subtasks: 
+        button#deleteTask Delete Task 
+        button#saveChanges Save Changes
