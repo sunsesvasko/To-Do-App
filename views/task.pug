@@ -12,5 +12,5 @@ block task
         - const textareaPlaceholder = currentTask.content || 'Description'
         textarea(name="description", cols="30", rows="10" class='taskDescription' placeholder=textareaPlaceholder)
         h2 Subtasks: 
-        button#deleteTask Delete Task 
+        button#deleteTask(data-taskid=`${currentTask._id}`) Delete Task 
         button#saveChanges Save Changes

@@ -1,0 +1,4 @@
+1. Make it so when a list is deleted, its' tasks are also deleted
+2. When creating a new task add a List option with the different lists the task
+   could belong to and making it contain the list id through a dataset attr
+3. Make it so that when you check a task it stays checked even after page reload

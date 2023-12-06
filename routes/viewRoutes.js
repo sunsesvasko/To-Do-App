@@ -9,5 +9,6 @@ router.get('/signin', viewController.getSigninForm);
 router.get('/overview', viewController.getOverviewPage);
 router.get('/overview/list', viewController.getListPage);
 router.get('/overview/list/task', viewController.getTaskPage);
+router.get('/overview/list/newTask', viewController.getNewTaskPage);
 
 module.exports = router;

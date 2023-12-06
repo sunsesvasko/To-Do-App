@@ -96,7 +96,7 @@ exports.getTaskPage = catchAsync(async(req, res, next) => {
     const taskName = req.query.taskName;
 
     const currentList = await List.findOne({ title: listName.join(' ') }).populate('tasks');
-    const currentTask = await Task.findOne({ title: taskName }).select('title content -_id');
+    const currentTask = await Task.findOne({ title: taskName }).select('title content');
 
     // TO DO - SEND BACK currentTask and start displaying TASK MENU TO USER
     reOrderTimeSensitiveTaskArray(defaultLists);
@@ -107,5 +107,29 @@ exports.getTaskPage = catchAsync(async(req, res, next) => {
         personalLists,
         currentList,
         currentTask 
+    });
+});
+
+exports.getNewTaskPage = catchAsync(async(req, res, next) => {
+    const excludeLists = ['Upcoming', 'Today', 'Sticky Wall']
+    const defaultLists = await findDefaultListsAndPopulate(excludeLists);
+    const personalLists = await findPersonalListAndPopulate(excludeLists);
+
+    // const listName = req.query.listName.split(' ');
+    const listName = structureListName(req.query.listName);
+    // const taskName = req.query.taskName;
+
+    const currentList = await List.findOne({ title: listName.join(' ') }).populate('tasks');
+    // const currentTask = await Task.findOne({ title: taskName }).select('title content -_id');
+
+    // TO DO - SEND BACK currentTask and start displaying TASK MENU TO USER
+    reOrderTimeSensitiveTaskArray(defaultLists);
+
+    res.status(200).render('newTask', {
+        title: `${listName}`,
+        defaultLists,
+        personalLists,
+        currentList,
+        // currentTask 
     });
 });

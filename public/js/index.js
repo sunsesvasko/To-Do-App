@@ -1,5 +1,10 @@
+import { createTask } from './createTask';
+import { deleteTask } from './deleteTask';
+
 const lists = document.querySelectorAll('.lists--container');
 const tasks = document.querySelectorAll('.task--container');
+const createTaskBtn = document.querySelector('#createTask');
+const deleteTaskBtn = document.querySelector('#deleteTask');
 const closeTaskMenu = document.querySelector('#closeTask');
 const openTaskMenus = document.querySelectorAll('.nextImage');
 const addNewTaskBtns = document.querySelector('.addNewTask--container');
@@ -28,15 +33,54 @@ if(lists.length > 0) {
 
 if(tasks.length > 0) {
     tasks.forEach(task => {
+        const taskName = task.firstChild.nextElementSibling.textContent;
+        console.log(localStorage.getItem(taskName));
+
+        // check if there are any checked tasks
+        if(localStorage.getItem(taskName)) {
+            task.firstChild.checked = true;
+            task.firstChild.nextSibling.style.textDecoration = 'line-through';
+        } else {
+            task.firstChild.nextSibling.style.textDecoration = '';
+        }
+
         task.addEventListener('click', (e) => {
-            // console.log(e.target);
             if(e.target.type === 'checkbox') {
-                // console.log(e.target.nextElementSibling);
-                if(e.target.checked) e.target.nextElementSibling.style.textDecoration = 'line-through';
-                else e.target.nextElementSibling.style.textDecoration = '';
+                // If the target is checked then save info to localStorage and mark it as checked | OR | remove it from localStorage and mark it as unchecked
+                if(e.target.checked) {
+                    localStorage.setItem(taskName, 'checked');
+                    task.firstChild.nextSibling.style.textDecoration = 'line-through';
+                } else {
+                    localStorage.removeItem(taskName);
+                    task.firstChild.nextSibling.style.textDecoration = '';
+                }
             } 
         });
     })
+}
+
+if(createTaskBtn) {
+    createTaskBtn.addEventListener('click', () => {
+        const taskTitle = document.querySelector('#taskTitle').value;
+        const taskContent = document.querySelector('.taskDescription').textContent;
+        const listId = createTaskBtn.dataset.listid;
+
+        const dataObj = {
+            title: taskTitle,
+            content: taskContent,
+            list: listId
+        }
+
+        createTask(dataObj);
+    })
+}
+
+if(deleteTaskBtn) {
+    deleteTaskBtn.addEventListener('click', () => {
+        const taskId = deleteTaskBtn.dataset.taskid;
+
+        deleteTask(taskId);
+    });
 }
 
 if(closeTaskMenu) {
@@ -60,9 +104,15 @@ if(openTaskMenus.length > 0) {
     })
 }
 
-// Make this open a window where you create a new task
 if(addNewTaskBtns) {
     addNewTaskBtns.addEventListener('click', (e) => {
-        console.log(e.target);
+        let listName = document.querySelector('.list--container').firstChild.textContent;
+        listName = listName.slice(0, -1);
+        const newLocation = `/overview/list/newTask?listName=${listName}`;
+
+        if(window.location.pathname === '/overview/list/newTask') return;
+
+        location.assign(newLocation);
     })
 }
+

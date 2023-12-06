@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;700&display=swap');
+
+.taskMenu--container, .taskMenu--container * {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.list--container {
+    width: 65%;
+}
+
+.taskMenu--container {
+    gap: 1rem;
+    width: 35%;
+    color: rgb(200, 200, 200);
+    padding: 1.5rem;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: #1e2122;
+    /* background-color: pink; */
+}
+
+.taskMenu--container h2 {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+#closeTask {
+    right: 1.5rem;
+    display: flex;
+    position: absolute;
+    font-size: 1.2rem;
+    align-items: center;
+    font-weight: 600;
+}
+
+#closeTask:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#closeTask:active {
+    transform: translateY(2px);
+}
+
+.taskMenu--container input , textarea {
+    color: rgb(200, 200, 200);
+    width: auto;
+    outline: none;
+}
+
+.taskMenu--container input {
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.taskMenu--container textarea {
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    resize: none;
+    height: 100px;
+    padding: 0.75rem 0.5rem;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+.taskMenu--container textarea::placeholder {
+    color: rgb(160, 160, 160);
+    font-size: 0.8rem;
+}
+
+.btnContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#createTask {
+    color: rgb(200, 200, 200);
+    width: 42.5%;
+    border: none;
+    bottom: 1.5rem;
+    padding: 0.7rem 0rem;
+    position: absolute;
+    font-weight: 500;
+    border-radius: 8px;
+    background-color: #7e6300;
+}
+
+#createTask:hover  {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+#createTask:active {
+    cursor: pointer;
+    transform: translateY(2px);
+}

@@ -11,7 +11,7 @@ exports.createTask = catchAsync(async(req, res, next) => {
         title: req.body.title,
         content: req.body.content,
         list: req.body.list,
-        user: req.user.id
+        // user: req.user.id
     })
 
     res.status(201).json({
