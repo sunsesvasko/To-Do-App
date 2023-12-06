@@ -10,11 +10,9 @@ export const createTask = async(data) => {
         
         if(res.data.status === 'success') {
             alert('Task created successfully!');
-            window.setTimeout(() => {
-                const listName = window.location.search.split('=')[1];
-                const newLocation = `/overview/list?name=${listName}`;
-                location.assign(newLocation)
-            }, 1000);
+            const listName = window.location.search.split('=')[1];
+            const newLocation = `/overview/list?name=${listName}`;
+            location.assign(newLocation)
         }
     } catch(err) {
         console.log(err.response.data.message);

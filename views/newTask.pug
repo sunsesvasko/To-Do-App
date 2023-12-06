@@ -11,6 +11,5 @@ block task
         input(type="text" placeholder='Enter task name' id='taskTitle')
         textarea(name="description", cols="30", rows="10" class='taskDescription' placeholder='Description')
         h2 Subtasks: 
-        //- button#deleteTask Delete Task 
         .btnContainer
             button#createTask(data-listId=`${currentList._id}`) Create Task  

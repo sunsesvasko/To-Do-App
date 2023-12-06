@@ -5429,7 +5429,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var createTask = exports.createTask = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(data) {
-    var res;
+    var res, listName, newLocation;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -5444,11 +5444,9 @@ var createTask = exports.createTask = /*#__PURE__*/function () {
           res = _context.sent;
           if (res.data.status === 'success') {
             alert('Task created successfully!');
-            window.setTimeout(function () {
-              var listName = window.location.search.split('=')[1];
-              var newLocation = "/overview/list?name=".concat(listName);
-              location.assign(newLocation);
-            }, 1000);
+            listName = window.location.search.split('=')[1];
+            newLocation = "/overview/list?name=".concat(listName);
+            location.assign(newLocation);
           }
           _context.next = 10;
           break;
@@ -5577,7 +5575,7 @@ if (tasks.length > 0) {
 if (createTaskBtn) {
   createTaskBtn.addEventListener('click', function () {
     var taskTitle = document.querySelector('#taskTitle').value;
-    var taskContent = document.querySelector('.taskDescription').textContent;
+    var taskContent = document.querySelector('.taskDescription').value;
     var listId = createTaskBtn.dataset.listid;
     var dataObj = {
       title: taskTitle,

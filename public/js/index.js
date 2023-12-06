@@ -62,7 +62,7 @@ if(tasks.length > 0) {
 if(createTaskBtn) {
     createTaskBtn.addEventListener('click', () => {
         const taskTitle = document.querySelector('#taskTitle').value;
-        const taskContent = document.querySelector('.taskDescription').textContent;
+        const taskContent = document.querySelector('.taskDescription').value;
         const listId = createTaskBtn.dataset.listid;
 
         const dataObj = {
