@@ -7,6 +7,7 @@ const createTaskBtn = document.querySelector('#createTask');
 const deleteTaskBtn = document.querySelector('#deleteTask');
 const closeTaskMenu = document.querySelector('#closeTask');
 const openTaskMenus = document.querySelectorAll('.nextImage');
+const addNewListBtn = document.querySelector('.addList--container');
 const addNewTaskBtns = document.querySelector('.addNewTask--container');
 
 if(lists.length > 0) {
@@ -103,6 +104,13 @@ if(addNewTaskBtns) {
 
         if(window.location.pathname === '/overview/list/newTask') return;
 
+        location.assign(newLocation);
+    })
+}
+
+if(addNewListBtn) {
+    addNewListBtn.addEventListener('click', () => {
+        const newLocation = `/overview/newList`;
         location.assign(newLocation);
     })
 }

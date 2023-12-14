@@ -5526,6 +5526,7 @@ var createTaskBtn = document.querySelector('#createTask');
 var deleteTaskBtn = document.querySelector('#deleteTask');
 var closeTaskMenu = document.querySelector('#closeTask');
 var openTaskMenus = document.querySelectorAll('.nextImage');
+var addNewListBtn = document.querySelector('.addList--container');
 var addNewTaskBtns = document.querySelector('.addNewTask--container');
 if (lists.length > 0) {
   lists.forEach(function (list) {
@@ -5607,6 +5608,12 @@ if (addNewTaskBtns) {
     listName = listName.slice(0, -1);
     var newLocation = "/overview/list/newTask?listName=".concat(listName);
     if (window.location.pathname === '/overview/list/newTask') return;
+    location.assign(newLocation);
+  });
+}
+if (addNewListBtn) {
+  addNewListBtn.addEventListener('click', function () {
+    var newLocation = "/overview/newList";
     location.assign(newLocation);
   });
 }

@@ -1,0 +1,14 @@
+extends overview
+
+block append head 
+    link(rel="stylesheet", href="/stylesheets/newList.css")
+    title #{title}
+
+block newList
+    .listMenu--container
+        h2 List:
+        span#closeList x
+        input(type="text" placeholder='Enter list name' id='listTitle')
+        textarea(name="description", cols="30", rows="10" class='listDescription' placeholder='Description')
+        .btnContainer
+            button#createList Create List  

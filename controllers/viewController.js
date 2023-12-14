@@ -86,6 +86,21 @@ exports.getListPage = catchAsync(async(req, res, next) => {
 
 });
 
+exports.getNewListPage = catchAsync(async(req, res, next) => {
+    const excludeLists = ['Upcoming', 'Today', 'Sticky Wall']
+    const defaultLists = await findDefaultListsAndPopulate(excludeLists);
+    const personalLists = await findPersonalListAndPopulate(excludeLists);
+
+    reOrderTimeSensitiveTaskArray(defaultLists);
+
+    res.status(200).render('newList', {
+        title: `Add New List`,
+        defaultLists,
+        personalLists
+    })
+
+});
+
 exports.getTaskPage = catchAsync(async(req, res, next) => {
     const excludeLists = ['Upcoming', 'Today', 'Sticky Wall']
     const defaultLists = await findDefaultListsAndPopulate(excludeLists);
