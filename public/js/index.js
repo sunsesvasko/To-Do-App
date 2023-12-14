@@ -1,7 +1,7 @@
 import { createTask } from './createTask';
 import { deleteTask } from './deleteTask';
 
-const lists = document.querySelectorAll('.lists--container');
+const lists = document.querySelectorAll('.container');
 const tasks = document.querySelectorAll('.task--container');
 const createTaskBtn = document.querySelector('#createTask');
 const deleteTaskBtn = document.querySelector('#deleteTask');
@@ -12,29 +12,20 @@ const addNewTaskBtns = document.querySelector('.addNewTask--container');
 if(lists.length > 0) {
     lists.forEach(list => {
         list.addEventListener('click', (e) => {
+            let listName;
             if(e.target.classList.contains('container')) {
-                const nodeName = e.target.children[1].nodeName.toLowerCase();
-                const listName = e.target.children[1].textContent.toLowerCase();
-    
-                if(nodeName === 'div') return;
-                // console.log(window.location);
-                location.assign(`/overview/list?name=${listName}`);
+                listName = e.target.children[1].textContent.toLowerCase();
             } else {
-                const nodeName = e.target.parentElement.children[1].nodeName.toLowerCase();
-                const listName = e.target.parentElement.children[1].textContent.toLowerCase();
-    
-                if(nodeName === 'div') return;
-                // console.log(window.location);
-                location.assign(`/overview/list?name=${listName}`);
+                listName = e.target.parentElement.children[1].textContent.toLowerCase();
             }
-        });
-    })
+            location.assign(`/overview/list?name=${listName}`);
+        })
+    });
 }
 
 if(tasks.length > 0) {
     tasks.forEach(task => {
         const taskName = task.firstChild.nextElementSibling.textContent;
-        console.log(localStorage.getItem(taskName));
 
         // check if there are any checked tasks
         if(localStorage.getItem(taskName)) {
@@ -115,4 +106,3 @@ if(addNewTaskBtns) {
         location.assign(newLocation);
     })
 }
-

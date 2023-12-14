@@ -83,22 +83,22 @@ body {
     text-transform: uppercase;
 }
 
-.container {
+.container, .addList--container {
     gap: 0.8rem;
     display: flex;
     align-items: center;
     position: relative;
-    font-weight: 500;
+    font-weight: 300;
     padding: 0.5rem 0rem;
 }
 
-.container:hover {
+.container:hover, .addList--container:hover {
     cursor: pointer;
     transform: scale(1.01);
 }
 
-.container img {
-    margin-left: 0.6rem; 
+.container img, .addList--container img {
+    margin-left: 0.6rem;
 }
 
 .container span {
@@ -109,6 +109,11 @@ body {
     position: absolute;
     background-color: #383d40;
 }
+
+.addList--container p {
+    font-weight: 500;
+}
+
 
 .selected {
     border-radius: 0.5rem;

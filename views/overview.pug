@@ -32,6 +32,10 @@ block content
             h5 Lists
             each list in personalLists
                 +list(list.title, 'square', 'square', false, list.tasks.length)
+            .addList--container
+                img(src='/uploads/add.png', alt='add')
+                p Add New List
+
         .logout--container
             img(src="/uploads/logout.png", alt="Logout Button")
             p Sign out
